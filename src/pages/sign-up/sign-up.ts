@@ -27,8 +27,8 @@ export class SignUpPage {
     try{
       console.log(user.email);
       console.log(user.password);
-      const result = await this.afauth.auth.createUserWithEmailAndPassword(user.email, user.password);
-      console.log(result);
+      await this.afauth.auth.createUserWithEmailAndPassword(user.email, user.password)
+                            .then( _ => this.navCtrl.pop());
     }
     catch(error){
       console.error(error);

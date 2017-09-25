@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AngularFireAuthModule } from "angularfire2/auth";
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login'; 
 
@@ -17,8 +16,6 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
   declarations: [
     MyApp,
     LoginPage
-    //HomePage,
-    //ListPage
   ],
   imports: [
     BrowserModule,
@@ -30,8 +27,6 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
   entryComponents: [
     MyApp,
     LoginPage
-    //HomePage,
-    //ListPage
   ],
   providers: [
     StatusBar,
