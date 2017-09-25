@@ -3,7 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { SignUpPage } from './sign-up';
 
 @NgModule({
-  declarations: [
+  declarations: [ 
     SignUpPage,
   ],
   imports: [
