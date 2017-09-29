@@ -10,7 +10,7 @@ import { Meal } from '../../models/meal';
 export class HomePage {
 
   meals:Meal[] = [
-    {name: "Breakfast", isActive:true},
+    {name: "Breakfast", isActive:false},
     {name: "Morning Snack", isActive:false},
     {name: "Lunch", isActive:false},
     {name: "Afternoon Snack", isActive:false},
@@ -18,8 +18,7 @@ export class HomePage {
   ]
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.meals[0].activatedTime = new Date();
-    console.log(this.meals[0].activatedTime);
+
   }
 
   onMealChange(position){
