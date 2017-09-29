@@ -3,9 +3,9 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AngularFireAuthModule } from "angularfire2/auth";
 
-import { MyApp } from './app.component';
-import { ListPage } from '../pages/list/list';
-import { LoginPage } from '../pages/login/login'; 
+//Components
+import { MyApp }      from './app.component';
+import { LoginPage }  from '../pages/login/login'; 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
