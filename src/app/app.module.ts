@@ -3,9 +3,12 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AngularFireAuthModule } from "angularfire2/auth";
 
-import { MyApp } from './app.component';
-import { ListPage } from '../pages/list/list';
-import { LoginPage } from '../pages/login/login'; 
+//Components
+import { MyApp }      from './app.component';
+import { LoginPage }  from '../pages/login/login'; 
+import { HomePage } from '../pages/home/home';
+import { LiquidsPage } from '../pages/liquids/liquids';
+import { InterchangeListPage } from '../pages/interchange-list/interchange-list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -15,7 +18,10 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage
+    LoginPage,
+    HomePage,
+    LiquidsPage,
+    InterchangeListPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,10 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage
+    LoginPage,
+    HomePage,
+    LiquidsPage,
+    InterchangeListPage
   ],
   providers: [
     StatusBar,

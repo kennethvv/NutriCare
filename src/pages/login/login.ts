@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { User } from "../../models/user";
 import { AngularFireAuth } from "angularfire2/auth";
 
@@ -20,7 +20,8 @@ export class LoginPage {
 
   user = {} as User;
 
-  constructor(private afauth: AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private afauth: AngularFireAuth,public navCtrl: NavController, public navParams: NavParams
+              ,public toastCtrl: ToastController ) {
   
   }
 
@@ -30,35 +31,32 @@ export class LoginPage {
 
   async login(user: User){
     try{
-      console.log(user.email);
-      console.log(user.password);
 
       await this.afauth.auth.signInWithEmailAndPassword(user.email,user.password)
-                            .then( response => this.successfullUser(response))
                             .then( _ => this.goToHome())
-                            .catch( error => this.loginFailed(error));
+                            .catch( error => this.showToastFailedLogin(error.message));
     }
     catch(error){
       console.error(error); 
     }
   }
 
-  loginFailed(error){
-    console.log("Error: "+ error);
-  }
-
-  successfullUser(response){
-    console.log("You log in successfully, it is a valid user");
-    console.log(response);
-
-  }
-
   goToHome(){
-    this.navCtrl.push('HomePage');
+    this.navCtrl.push('TabsPage');
   }
 
   signup(){
     this.navCtrl.push('SignUpPage');
+  }
+
+  showToastFailedLogin(failedMessage:string){
+    let toast = this.toastCtrl.create({
+      message: "Attempt to Login Failed: " + failedMessage,
+      duration: 5000,
+      position: "top"
+    });
+
+    toast.present();
   }
 
 }
