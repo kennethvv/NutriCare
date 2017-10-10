@@ -7,12 +7,50 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>interchangeList</ion-title>
+    <ion-title>Intercambios</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <h3>Lista de Intercambios</h3>
+  <ion-list>
+       <ion-item (click)="goToDetails()">
+          <ion-avatar item-start>
+            <img src="img/apple.png">
+          </ion-avatar>
+          <h2>Frutas</h2>
+      </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="img/bread.png">
+      </ion-avatar>
+      <h2>Harinas</h2>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="img/egg.png">
+      </ion-avatar>
+      <h2>Carnes/Proteinas</h2>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="img/berenjena.png">
+      </ion-avatar>
+      <h2>Vegetales</h2>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="img/milk.png">
+      </ion-avatar>
+      <h2>Lácteos</h2>
+    </ion-item>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="img/butter.png">
+      </ion-avatar>
+      <h2>Grasas</h2>
+    </ion-item>
+  </ion-list>
 </ion-content>

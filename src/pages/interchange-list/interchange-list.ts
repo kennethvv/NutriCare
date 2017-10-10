@@ -22,4 +22,8 @@ export class InterchangeListPage {
     console.log('ionViewDidLoad InterchangeListPage');
   }
 
+  goToDetails(){
+    this.navCtrl.push('InterchangeDetailsPage');
+  }
+
 }
