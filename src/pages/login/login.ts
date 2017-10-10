@@ -33,7 +33,7 @@ export class LoginPage {
     try{
 
       await this.afauth.auth.signInWithEmailAndPassword(user.email,user.password)
-                            .then( _ => this.goToHome())
+                            .then( _ => this.goToLiquids())
                             .catch( error => this.showToastFailedLogin(error.message));
     }
     catch(error){
@@ -43,6 +43,11 @@ export class LoginPage {
 
   goToHome(){
     this.navCtrl.push('HomePage');
+  }
+
+  goToLiquids(){
+    this.navCtrl.push('LiquidsPage');
+
   }
 
   signup(){
