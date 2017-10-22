@@ -17,13 +17,15 @@ export class HomePage {
     {name: "Dinner", isActive:false}
   ]
 
+  public dateOfMeals:string = new Date().toLocaleDateString();
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
 
   onMealChange(position){
     if(this.meals[position].isActive){
-      this.meals[position].activatedTime = new Date();
+      this.meals[position].activatedTime = new Date().toLocaleTimeString();
     }
   }
 }
