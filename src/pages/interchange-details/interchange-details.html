@@ -1,0 +1,56 @@
+<!--
+  Generated template for the InterchangeDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar [color]="category">
+    <ion-title>{{category}}</ion-title>
+    <label>Cada opción equivale una porción</label>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div [ngSwitch]="category" >  
+      <ng-template [ngSwitchCase]="'Fruits'" *ngFor="let fruit of fruits">
+          <ion-item>
+              <div item-left>{{fruit.name}}</div>
+              <div item-right>{{fruit.portion}}</div>
+          </ion-item>
+        </ng-template>
+      <ng-template [ngSwitchCase]="'Flours'" *ngFor="let flour of flours">
+          <ion-item>
+              <div item-left>{{flour.name}}</div>
+              <div item-right>{{flour.portion}}</div>
+          </ion-item>
+      </ng-template>
+      <ng-template [ngSwitchCase]="'Meats'" *ngFor="let meat of meats">
+          <ion-item>
+              <div item-left>{{meat.name}}</div>
+              <div item-right>{{meat.portion}}</div>
+          </ion-item>
+      </ng-template>
+      <ng-template [ngSwitchCase]="'Vegetables'" *ngFor="let vegetable of vegetables">
+          <ion-item>
+              <div item-left>{{vegetable.name}}</div>
+              <div item-right>{{vegetable.portion}}</div>
+          </ion-item>
+      </ng-template>
+      <ng-template [ngSwitchCase]="'Dairys'" *ngFor="let dairy of dairys">
+          <ion-item>
+              <div item-left>{{dairy.name}}</div>
+              <div item-right>{{dairy.portion}}</div>
+          </ion-item>
+      </ng-template>
+      <ng-template [ngSwitchCase]="'Oils'" *ngFor="let oil of oils">
+          <ion-item>
+              <div item-left>{{oil.name}}</div>
+              <div item-right>{{oil.portion}}</div>
+          </ion-item>
+      </ng-template>
+  </div>
+</ion-content>
