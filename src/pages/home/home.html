@@ -9,14 +9,18 @@
 
 <ion-content padding>  
   <ion-list>
-    <ng-container *ngFor="let meal of meals; let i = index">
-      <ion-item>
-        <ion-label>{{meal.name}}</ion-label>
-        <ion-toggle [(ngModel)]="meal.isActive" color="secondary" checked="meal.isActive" (ionChange)="onMealChange(i);"></ion-toggle>  
-      </ion-item>
-      <ion-item *ngIf="meal.isActive">
-          <ion-label>{{meal.activatedTime}}</ion-label>
-      </ion-item>
-    </ng-container>
+    <ion-item-group>
+      <ion-item-divider color="light">Today's Date: {{dateOfMeals}}</ion-item-divider>
+      <ng-container *ngFor="let meal of meals; let i = index">
+        <ion-item>
+          <ion-label>{{meal.name}}</ion-label>
+          <ion-toggle [(ngModel)]="meal.isActive" color="secondary" checked="meal.isActive" (ionChange)="onMealChange(i);"></ion-toggle>  
+        </ion-item>
+        <ion-item *ngIf="meal.isActive">
+            <ion-label>Eaten at:</ion-label>
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="meal.activatedTime"></ion-datetime> 
+        </ion-item>
+      </ng-container>
+    </ion-item-group>
   </ion-list>
 </ion-content>
