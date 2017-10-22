@@ -22,8 +22,40 @@ export class InterchangeListPage {
     console.log('ionViewDidLoad InterchangeListPage');
   }
 
-  goToDetails(){
-    this.navCtrl.push('InterchangeDetailsPage');
+  goToFruits(){
+    this.navCtrl.push('InterchangeDetailsPage',{
+      categoryPassed: "Fruits"
+    });
   }
+
+  goToFlours(){
+    this.navCtrl.push('InterchangeDetailsPage',{
+      categoryPassed: "Flours"
+    });
+  }
+
+  goToMeats(){
+    this.navCtrl.push('InterchangeDetailsPage',{
+      categoryPassed: "Meats"
+    });  
+  }
+  goToVegetables(){
+    this.navCtrl.push('InterchangeDetailsPage',{
+      categoryPassed: "Vegetables"
+    });  
+  }
+
+  goToDairys(){
+    this.navCtrl.push('InterchangeDetailsPage',{
+      categoryPassed: "Dairys"
+    });  
+  }
+
+  goToOils(){
+    this.navCtrl.push('InterchangeDetailsPage',{
+      categoryPassed: "Oils"
+    });  
+  }
+
 
 }
