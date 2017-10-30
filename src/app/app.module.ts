@@ -1,7 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+//Firebase imports
+import { FIREBASE_CONFIG } from './app.firebase.config';
+import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFirestoreModule } from "angularfire2/firestore";
+
 
 //Components
 import { MyApp }      from './app.component';
@@ -12,8 +17,8 @@ import { InterchangeListPage } from '../pages/interchange-list/interchange-list'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AngularFireModule } from 'angularfire2';
-import { FIREBASE_CONFIG } from './app.firebase.config';
+
+
 
 @NgModule({
   declarations: [
@@ -27,7 +32,8 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

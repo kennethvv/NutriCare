@@ -1,4 +1,3 @@
-import { MyApp } from './../../app/app.component';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InterchangeMeal } from '../../models/interchangeMeal';
