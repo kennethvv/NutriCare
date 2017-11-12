@@ -1,5 +1,6 @@
-export interface Meal{
-    name: string;
-    isActive: boolean;
-    activatedTime?: string;
+export class Meal{
+    
+    constructor(public name:string, public isActive:string, public activatedTime:string){
+
+    }
 }

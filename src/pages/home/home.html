@@ -18,7 +18,7 @@
         </ion-item>
         <ion-item *ngIf="meal.isActive">
             <ion-label>Eaten at:</ion-label>
-            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="meal.activatedTime"></ion-datetime> 
+            <ion-label text-right>{{meal.activatedTime}}</ion-label> 
         </ion-item>
       </ng-container>
     </ion-item-group>
