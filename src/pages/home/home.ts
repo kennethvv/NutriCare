@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Meal } from '../../models/meal';
+import { User } from '../../models/user';
+import { AngularFireAuth } from "angularfire2/auth";
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @IonicPage()
 @Component({
@@ -9,23 +12,47 @@ import { Meal } from '../../models/meal';
 })
 export class HomePage {
 
-  meals:Meal[] = [
-    {name: "Breakfast", isActive:false},
-    {name: "Morning Snack", isActive:false},
-    {name: "Lunch", isActive:false},
-    {name: "Afternoon Snack", isActive:false},
-    {name: "Dinner", isActive:false}
-  ]
+  meals: Meal[] = []
 
-  public dateOfMeals:string = new Date().toLocaleDateString();
+  private dateOfMeals: string;
+  private currentUser = new User();
+  private currentDateParse: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, private afauth: AngularFireAuth,
+    private db: AngularFirestore) {
+    this.dateOfMeals = new Date().toLocaleDateString();
+    this.currentDateParse = this.dateOfMeals.replace(/\//g, "-");
+    this.currentUser.userid = this.afauth.auth.currentUser.uid;
+    this.getCurrentDayMeals();
   }
 
-  onMealChange(position){
-    if(this.meals[position].isActive){
+  onMealChange(position) {
+    if (this.meals[position].isActive) {
       this.meals[position].activatedTime = new Date().toLocaleTimeString();
+      this.saveMealStatus(this.meals[position]);
     }
   }
+
+  saveMealStatus(meal: Meal) {
+    this.db.collection("users").doc(this.currentUser.userid).collection("diets").doc(this.currentDateParse).collection("meals").doc(meal.name).set({
+      "name": meal.name,
+      "isActive": meal.isActive,
+      "activatedTime": meal.activatedTime
+    })
+      .then( _ => console.log(""))
+      .catch(error => console.log(error));
+  }
+
+  retrieveMealStatus() {
+  }
+
+  getCurrentDayMeals() {
+    const currentDietDate = this.db.collection("users").doc(this.currentUser.userid).collection("diets").doc(this.currentDateParse).collection("meals");
+    currentDietDate.ref.get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        this.meals.push(new Meal(doc.data().name, doc.data().isActive, doc.data().activatedTime));
+      });
+    });
+  }
+
 }
