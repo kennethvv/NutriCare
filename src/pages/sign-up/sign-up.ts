@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from "angularfire2/auth";
+import {AngularFirestore} from 'angularfire2/firestore';
 
 import { User } from '../../models/User';
 
@@ -21,13 +22,15 @@ export class SignUpPage {
   user = {} as User;
 
   constructor(private afauth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams
-              ,public toastCtrl: ToastController) {
+              ,public toastCtrl: ToastController, public db:AngularFirestore) {
   }
 
   async signUp(user: User){
     try{
 
       await this.afauth.auth.createUserWithEmailAndPassword(user.email, user.password)
+                            //.then(result => console.log(result.uid))                    
+                            .then(result => this.insertUser(result,user))
                             .then( _ => this.navCtrl.pop())
                             .catch(error => this.showToastFailedSignUp(error.message));
     }
@@ -36,6 +39,11 @@ export class SignUpPage {
     }
   }
 
+  insertUser(result,user){
+    //console.log(result.uid);
+    this.db.collection("users").doc(result.uid).set(user.email)
+    .catch(error => this.showToastFailedSignUp(error.message));
+  }
   showToastFailedSignUp(failedMessage:string){
     let toast = this.toastCtrl.create({
       message: "Attempt to SignUp Failed: " + failedMessage,
