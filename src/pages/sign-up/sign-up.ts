@@ -41,7 +41,10 @@ export class SignUpPage {
 
   insertUser(result,user){
     //console.log(result.uid);
-    this.db.collection("users").doc(result.uid).set(user.email)
+    this.db.collection("users").doc(result.uid).set({
+      "email": user.email,
+      "userid": result.uid 
+    })
     .catch(error => this.showToastFailedSignUp(error.message));
   }
   showToastFailedSignUp(failedMessage:string){
