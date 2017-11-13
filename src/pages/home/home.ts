@@ -34,7 +34,7 @@ export class HomePage {
   }
 
   saveMealStatus(meal: Meal) {
-    this.db.collection("users").doc(this.currentUser.userid).collection("diets").doc(this.currentDateParse).collection("meals").doc(meal.name).set({
+    this.db.collection("users").doc(this.currentUser.userid).collection("diets").doc(this.currentDateParse).collection("meals").doc(meal.orderNbr).set({
       "name": meal.name,
       "isActive": meal.isActive,
       "activatedTime": meal.activatedTime
@@ -49,10 +49,28 @@ export class HomePage {
   getCurrentDayMeals() {
     const currentDietDate = this.db.collection("users").doc(this.currentUser.userid).collection("diets").doc(this.currentDateParse).collection("meals");
     currentDietDate.ref.get().then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        this.meals.push(new Meal(doc.data().name, doc.data().isActive, doc.data().activatedTime));
-      });
+      if(querySnapshot.docs.length > 0){
+        querySnapshot.forEach(doc => {
+          this.meals.push(new Meal(doc.id,doc.data().name, doc.data().isActive, doc.data().activatedTime));
+        });
+      }
+      else{
+        this.saveDefaultMeals();
+      }
     });
+  }
+
+  saveDefaultMeals(){
+    this.meals.push(new Meal("1","Breakfast", false,"00:00:00"));
+    this.meals.push(new Meal("2","Morning Snack",false,"00:00:00"));
+    this.meals.push(new Meal("3","Lunch",false,"00:00:00"));
+    this.meals.push(new Meal("4","Afternoon Snack",false,"00:00:00"));
+    this.meals.push(new Meal("5","Dinner",false,"00:00:00"));
+    this.saveMealStatus(this.meals[0]);
+    this.saveMealStatus(this.meals[1]);
+    this.saveMealStatus(this.meals[2]);
+    this.saveMealStatus(this.meals[3]);
+    this.saveMealStatus(this.meals[4]);
   }
 
 }

@@ -1,6 +1,6 @@
 export class Meal{
     
-    constructor(public name:string, public isActive:string, public activatedTime:string){
+    constructor(public orderNbr:string, public name:string, public isActive:boolean, public activatedTime:string){
 
     }
 }
