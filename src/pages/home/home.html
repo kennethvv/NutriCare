@@ -3,21 +3,21 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Daily Meals</ion-title>
+    <ion-title>Comidas Diarias</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>  
   <ion-list>
     <ion-item-group>
-      <ion-item-divider color="light">Today's Date: {{dateOfMeals}}</ion-item-divider>
+      <ion-item-divider color="light">Hoy es: {{dateOfMeals}}</ion-item-divider>
       <ng-container *ngFor="let meal of meals; let i = index">
         <ion-item>
           <ion-label>{{meal.name}}</ion-label>
           <ion-toggle [(ngModel)]="meal.isActive" color="secondary" checked="meal.isActive" (ionChange)="onMealChange(i);"></ion-toggle>  
         </ion-item>
         <ion-item *ngIf="meal.isActive">
-            <ion-label>Eaten at:</ion-label>
+            <ion-label>Comida hecha a las:</ion-label>
             <ion-label text-right>{{meal.activatedTime}}</ion-label> 
         </ion-item>
       </ng-container>
