@@ -25,20 +25,22 @@ export class LoginPage {
   
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-
   async login(user: User){
     try{
 
       await this.afauth.auth.signInWithEmailAndPassword(user.email,user.password)
+                            .then(_ => this.clearFields())
                             .then( _ => this.goToHome())
                             .catch( error => this.showToastFailedLogin(error.message));
     }
     catch(error){
       console.error(error); 
     }
+  }
+
+  clearFields(){
+    this.user.email = "";
+    this.user.password = "";
   }
 
   goToHome(){
