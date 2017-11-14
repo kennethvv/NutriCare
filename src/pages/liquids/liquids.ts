@@ -22,7 +22,7 @@ export class LiquidsPage {
   liquid: Liquid = new Liquid("liquido",0);
   
     private dateOfLiquids: string;
-    private currentUser = new User();
+    private currentUser = {} as User;
     private currentDateParse: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afauth: AngularFireAuth,
@@ -32,7 +32,6 @@ export class LiquidsPage {
     this.currentUser.userid = this.afauth.auth.currentUser.uid;
     this.getCurrentLiquid();
   }
-
   
  /* onLiquidChange(position) {
     if (this.meals[position].isActive) {

@@ -15,7 +15,7 @@ export class HomePage {
   meals: Meal[] = []
 
   private dateOfMeals: string;
-  private currentUser = new User();
+  private currentUser ={} as User;
   private currentDateParse: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afauth: AngularFireAuth,
@@ -43,9 +43,6 @@ export class HomePage {
       .catch(error => console.log(error));
   }
 
-  retrieveMealStatus() {
-  }
-
   getCurrentDayMeals() {
     const currentDietDate = this.db.collection("users").doc(this.currentUser.userid).collection("diets").doc(this.currentDateParse).collection("meals");
     currentDietDate.ref.get().then(querySnapshot => {
@@ -61,11 +58,11 @@ export class HomePage {
   }
 
   saveDefaultMeals(){
-    this.meals.push(new Meal("1","Breakfast", false,"00:00:00"));
-    this.meals.push(new Meal("2","Morning Snack",false,"00:00:00"));
-    this.meals.push(new Meal("3","Lunch",false,"00:00:00"));
-    this.meals.push(new Meal("4","Afternoon Snack",false,"00:00:00"));
-    this.meals.push(new Meal("5","Dinner",false,"00:00:00"));
+    this.meals.push(new Meal("1","Desayuno", false,"00:00:00"));
+    this.meals.push(new Meal("2","Merienda Mañana",false,"00:00:00"));
+    this.meals.push(new Meal("3","Almuerzo",false,"00:00:00"));
+    this.meals.push(new Meal("4","Merienda Tarde",false,"00:00:00"));
+    this.meals.push(new Meal("5","Cena",false,"00:00:00"));
     this.saveMealStatus(this.meals[0]);
     this.saveMealStatus(this.meals[1]);
     this.saveMealStatus(this.meals[2]);

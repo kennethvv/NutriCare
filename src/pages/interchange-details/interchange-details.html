@@ -1,9 +1,3 @@
-<!--
-  Generated template for the InterchangeDetailsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar [color]="category">
@@ -13,40 +7,39 @@
 
 </ion-header>
 
-
 <ion-content padding>
   <div [ngSwitch]="category" >  
-      <ng-template [ngSwitchCase]="'Fruits'" *ngFor="let fruit of fruits">
+      <ng-template [ngSwitchCase]="'Frutas'" *ngFor="let fruit of Frutas">
           <ion-item>
               <div item-left>{{fruit.name}}</div>
               <div item-right>{{fruit.portion}}</div>
           </ion-item>
         </ng-template>
-      <ng-template [ngSwitchCase]="'Flours'" *ngFor="let flour of flours">
+      <ng-template [ngSwitchCase]="'Harinas'" *ngFor="let flour of Harinas">
           <ion-item>
               <div item-left>{{flour.name}}</div>
               <div item-right>{{flour.portion}}</div>
           </ion-item>
       </ng-template>
-      <ng-template [ngSwitchCase]="'Meats'" *ngFor="let meat of meats">
+      <ng-template [ngSwitchCase]="'Carnes'" *ngFor="let meat of Carnes">
           <ion-item>
               <div item-left>{{meat.name}}</div>
               <div item-right>{{meat.portion}}</div>
           </ion-item>
       </ng-template>
-      <ng-template [ngSwitchCase]="'Vegetables'" *ngFor="let vegetable of vegetables">
+      <ng-template [ngSwitchCase]="'Vegetales'" *ngFor="let vegetable of Vegetales">
           <ion-item>
               <div item-left>{{vegetable.name}}</div>
               <div item-right>{{vegetable.portion}}</div>
           </ion-item>
       </ng-template>
-      <ng-template [ngSwitchCase]="'Dairys'" *ngFor="let dairy of dairys">
+      <ng-template [ngSwitchCase]="'Lacteos'" *ngFor="let dairy of Lacteos">
           <ion-item>
               <div item-left>{{dairy.name}}</div>
               <div item-right>{{dairy.portion}}</div>
           </ion-item>
       </ng-template>
-      <ng-template [ngSwitchCase]="'Oils'" *ngFor="let oil of oils">
+      <ng-template [ngSwitchCase]="'Aceites'" *ngFor="let oil of Aceites">
           <ion-item>
               <div item-left>{{oil.name}}</div>
               <div item-right>{{oil.portion}}</div>
