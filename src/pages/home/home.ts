@@ -15,7 +15,7 @@ export class HomePage {
   meals: Meal[] = []
 
   private dateOfMeals: string;
-  private currentUser = new User();
+  private currentUser ={} as User;
   private currentDateParse: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private afauth: AngularFireAuth,
@@ -41,9 +41,6 @@ export class HomePage {
     })
       .then( _ => console.log(""))
       .catch(error => console.log(error));
-  }
-
-  retrieveMealStatus() {
   }
 
   getCurrentDayMeals() {

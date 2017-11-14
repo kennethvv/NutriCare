@@ -21,13 +21,16 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
-    console.log(page);
+  openProfilePage() {
+    this.menu.close();
+    this.nav.push('ProfilePage');
   }
 
   logOut(){
     this.menu.close();
     this.afauth.auth.signOut().then(data => console.log(data)).then(_ => this.nav.popToRoot()).catch(error => console.log(error));
   }
+
+  
   
 }
