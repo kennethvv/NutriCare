@@ -34,36 +34,36 @@ export class InterchangeListPage {
 
   goToFruits(){
     this.navCtrl.push('InterchangeDetailsPage',{
-      categoryPassed: "Fruits"
+      categoryPassed: "Frutas"
     });
   }
 
   goToFlours(){
     this.navCtrl.push('InterchangeDetailsPage',{
-      categoryPassed: "Flours"
+      categoryPassed: "Harinas"
     });
   }
 
   goToMeats(){
     this.navCtrl.push('InterchangeDetailsPage',{
-      categoryPassed: "Meats"
+      categoryPassed: "Carnes"
     });  
   }
   goToVegetables(){
     this.navCtrl.push('InterchangeDetailsPage',{
-      categoryPassed: "Vegetables"
+      categoryPassed: "Vegetales"
     });  
   }
 
   goToDairys(){
     this.navCtrl.push('InterchangeDetailsPage',{
-      categoryPassed: "Dairys"
+      categoryPassed: "Lacteos"
     });  
   }
 
   goToOils(){
     this.navCtrl.push('InterchangeDetailsPage',{
-      categoryPassed: "Oils"
+      categoryPassed: "Aceites"
     });  
   }
 
