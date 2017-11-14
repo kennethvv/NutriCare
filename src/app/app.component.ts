@@ -22,6 +22,7 @@ export class MyApp {
   }
 
   openProfilePage() {
+    this.menu.close();
     this.nav.push('ProfilePage');
   }
 
@@ -29,5 +30,7 @@ export class MyApp {
     this.menu.close();
     this.afauth.auth.signOut().then(data => console.log(data)).then(_ => this.nav.popToRoot()).catch(error => console.log(error));
   }
+
+  
   
 }

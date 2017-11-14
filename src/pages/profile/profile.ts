@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from "angularfire2/auth";
 import {AngularFirestore} from 'angularfire2/firestore';
-import { Profile } from '../../models/Profile';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 /**
  * Generated class for the ProfilePage page.
@@ -20,34 +20,52 @@ import { Profile } from '../../models/Profile';
 export class ProfilePage {
   showToastFailedSignUp: any;
 
-  profile ={} as Profile;
+  user = {} as User;
   
-  private currentUser = new User();
 
   constructor(private afauth: AngularFireAuth,public navCtrl: NavController, public navParams: NavParams
-    ,public toastCtrl: ToastController, public db:AngularFirestore) {
-      this.currentUser.userid = this.afauth.auth.currentUser.uid;
-      this.currentUser.email = this.afauth.auth.currentUser.email;
+    ,public toastCtrl: ToastController, public db:AngularFirestore, public alertCtrl:AlertController) {
+    this.user.userid = this.afauth.auth.currentUser.uid;
+    this.getCurrentUserData();
   }
  
+  getCurrentUserData(){
+    const currentUserDate = this.db.collection("users").doc(this.user.userid);
+    currentUserDate.ref.get().then(doc => {
+      if(doc.exists){
+        this.user = doc.data();
+      }
+    }).catch(error => console.log(error));
+  }
+
+  updateUserProfile(){
+    this.showConfirm(); 
+  }
+
+  showConfirm() {
+    let confirm = this.alertCtrl.create({
+      title: '¿Desea actualizar su información personal?',
+      message: 'Se actualizarán sus datos personales',
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Actualizar',
+          handler: () => {
+            this.saveUserData();
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
   
-  setProfile(profile: Profile){
-    this.db.collection("users").doc(this.currentUser.userid).set({
-      "nombre": profile.nombre,
-      "apellido": profile.apellido,
-      "peso": profile.peso,
-      "estatura": profile.estatura,
-      "edad": profile.edad,
-      "genero": profile.genero,
-      "uid": this.currentUser.userid,
-      "email": this.currentUser.email
-    })
-    .then( _ => console.log(""))
-    .catch(error => console.log(error));
+  saveUserData(){
+    this.db.collection("users").doc(this.user.userid).set(this.user)
+    .then( _ => this.navCtrl.pop())
+    .catch(error => console.log(error));   
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
-  }
-
 }
