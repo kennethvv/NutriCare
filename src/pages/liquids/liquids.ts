@@ -32,7 +32,6 @@ export class LiquidsPage {
     this.currentUser.userid = this.afauth.auth.currentUser.uid;
     this.getCurrentLiquid();
   }
-
   
  /* onLiquidChange(position) {
     if (this.meals[position].isActive) {
