@@ -1,7 +1,8 @@
-import { Component} from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild} from '@angular/core';
+import { Platform, Nav, MenuController} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AngularFireAuth } from "angularfire2/auth";
  
 import { LoginPage } from '../pages/login/login';
 
@@ -9,28 +10,24 @@ import { LoginPage } from '../pages/login/login';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  //@ViewChild(Nav) nav: Nav;
+  @ViewChild(Nav) nav: Nav;
 
   rootPage: any = LoginPage;
 
-  constructor(platform: Platform, statusbar: StatusBar, splashScreen: SplashScreen){
+  constructor(private afauth:AngularFireAuth, platform: Platform, statusbar: StatusBar, splashScreen: SplashScreen,private menu: MenuController){
     platform.ready().then(() => {
       statusbar.styleDefault();
       splashScreen.hide();
     });
   }
-/*
-    this.pages = [
-      { title: 'Home', component: HomePage }
-    ];
-  }
-*/
+
   openPage(page) {
     console.log(page);
   }
 
   logOut(){
-    console.log("Cerrar Sesion");
+    this.menu.close();
+    this.afauth.auth.signOut().then(data => console.log(data)).then(_ => this.nav.popToRoot()).catch(error => console.log(error));
   }
   
 }

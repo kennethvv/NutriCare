@@ -3,7 +3,6 @@ import { IonicPage } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { LiquidsPage } from '../liquids/liquids';
 import { InterchangeListPage } from '../interchange-list/interchange-list';
-import { NavParams } from 'ionic-angular/navigation/nav-params';
 
 @IonicPage()
 @Component({

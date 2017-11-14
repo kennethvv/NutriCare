@@ -28,15 +28,20 @@ export class SignUpPage {
   async signUp(user: User){
     try{
 
-      await this.afauth.auth.createUserWithEmailAndPassword(user.email, user.password)
-                            //.then(result => console.log(result.uid))                    
+      await this.afauth.auth.createUserWithEmailAndPassword(user.email, user.password)                 
                             .then(result => this.insertUser(result,user))
+                            .then( _ => this.clearFields())
                             .then( _ => this.navCtrl.pop())
                             .catch(error => this.showToastFailedSignUp(error.message));
     }
     catch(error){
       console.error(error);
     }
+  }
+
+  clearFields(){
+    this.user.email = "";
+    this.user.password = "";
   }
 
   insertUser(result,user){
