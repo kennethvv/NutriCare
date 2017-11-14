@@ -21,8 +21,8 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
-    console.log(page);
+  openProfilePage() {
+    this.nav.push('ProfilePage');
   }
 
   logOut(){
