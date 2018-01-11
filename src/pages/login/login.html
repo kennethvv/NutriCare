@@ -7,14 +7,14 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>NutriCare</ion-title>
+    <ion-title>Food Diary</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
   <ion-item class="logo">
-      <img src="img/nutricarelogo.png"/>
+      <img src="img/fooddiary.png"/>
   </ion-item>
   <ion-item>
     <ion-label floating>Correo Electrónico</ion-label>
@@ -25,5 +25,5 @@
     <ion-input type="password" [(ngModel)]="user.password" ></ion-input>
   </ion-item>
   <button ion-button (click)="login(user)" block class="button">Iniciar Sesión</button>
-  <button ion-button color="secondary" (click)="signup()" block class="button">Registrarse</button>
+  <button ion-button color="dark" (click)="signup()" block class="button">Registrarse</button>
 </ion-content>
