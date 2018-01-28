@@ -1,0 +1,66 @@
+<!--
+  Generated template for the ReportsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Reportes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ <!-- <ng-template  *ngFor="let meals of meals">
+    <ion-item>
+        <div item-left>{{meals.name}}</div>
+        <div item-left>{{meals.isActive}}</div>
+        <div item-left>{{meals.activatedTime}}</div>
+    </ion-item>
+  </ng-template>-->
+  <input type="date" id="date" name="date" 
+         placeholder="Inicio"   />
+         <input type="date" id="date2" name="date2" 
+         placeholder="Inicio"   />
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider color="light">Hoy es: {{CurrentDate}}</ion-item-divider>
+      <ng-container *ngFor="let meal of meals; let i = index">
+        <ion-item>
+          <ion-label>{{meal.name}}</ion-label>
+           
+        </ion-item>
+       
+        <ion-item *ngIf="meal.isActive">
+            <ion-label>Comida hecha a las:</ion-label>
+            <ion-label text-right>{{meal.activatedTime}}</ion-label> 
+           <!-- <ion-item>
+              <ion-label>Jon Snow</ion-label>
+              <ion-checkbox checked="true"></ion-checkbox>
+            </ion-item>-->
+        </ion-item>
+        
+      </ng-container>
+
+      <ng-container *ngFor="let liquid of liquids; let i = index">
+        <ion-item>
+          <ion-label>{{liquid.id}}</ion-label>
+           
+        </ion-item>
+       
+  
+            <ion-label>Cantidad de vasos consumidos:</ion-label>
+            <ion-label>{{liquid.liq}}</ion-label>
+           <!-- <ion-item>
+              <ion-label>Jon Snow</ion-label>
+              <ion-checkbox checked="true"></ion-checkbox>
+            </ion-item>-->
+      
+        
+      </ng-container>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

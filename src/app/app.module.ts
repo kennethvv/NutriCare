@@ -14,6 +14,7 @@ import { LoginPage }  from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { LiquidsPage } from '../pages/liquids/liquids';
 import { InterchangeListPage } from '../pages/interchange-list/interchange-list';
+import { ReportsPage } from '../pages/reports/reports';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -26,7 +27,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginPage,
     HomePage,
     LiquidsPage,
-    InterchangeListPage
+    InterchangeListPage,
+    ReportsPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginPage,
     HomePage,
     LiquidsPage,
-    InterchangeListPage
+    InterchangeListPage,
+    ReportsPage
   ],
   providers: [
     StatusBar,
